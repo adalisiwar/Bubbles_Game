@@ -75,13 +75,13 @@ A modern, interactive bubble-popping game built with vanilla HTML, CSS, and Java
 
 ## File Structure
 
-\`\`\`
+```bash
 .
 ├── index.html       # Main HTML structure (game canvas, HUD, tutorial, pause screen)
 ├── style.css        # All styling and animations (modern gaming aesthetic)
 ├── script.js        # Complete game logic and mechanics
 └── README.md        # This file
-\`\`\`
+```
 
 ## Code Organization (script.js)
 
