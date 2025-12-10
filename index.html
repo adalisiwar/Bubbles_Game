@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pop the Bubbles - Endless Action Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="stars"></div>
+    
+    <!-- Added tutorial elli bch yodhhr at game start -->
+    <div id="tutorial-modal" class="tutorial-modal">
+      <div class="tutorial-content">
+        <h2 class="tutorial-title">How to Play</h2>
+        <div class="tutorial-body">
+          <div class="tutorial-section">
+            <h3>Bubble Types</h3>
+            <div class="bubble-guide">
+              <div class="guide-item">
+                <div class="guide-bubble normal" title="Normal Bubble">●</div>
+                <div class="guide-text">
+                  <strong>Normal</strong><br/>
+                  10 pts | Builds combo
+                </div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-bubble double" title="Double Points">◆</div>
+                <div class="guide-text">
+                  <strong>Double</strong><br/>
+                  20 pts | 2x value
+                </div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-bubble triple" title="Triple Points">★</div>
+                <div class="guide-text">
+                  <strong>Triple</strong><br/>
+                  50 pts | 3x value
+                </div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-bubble bomb" title="Bomb Bubble">💣</div>
+                <div class="guide-text">
+                  <strong>Bomb</strong><br/>
+                  -30 pts | Explodes!
+                </div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-bubble powerup" title="Power-up">⚡</div>
+                <div class="guide-text">
+                  <strong>Power-up</strong><br/>
+                  100 pts | Special!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tutorial-section">
+            <h3>Game Mechanics</h3>
+            <ul class="mechanics-list">
+              <li><strong>Combo System:</strong> Pop normal bubbles to build multiplier (max 3x)</li>
+              <li><strong>Bombs:</strong> Explode and pop nearby bubbles, triggering chains!</li>
+              <li><strong>Power-ups:</strong> Slow Motion, 2X Points, or Shield</li>
+              <li><strong>Waves:</strong> Game speeds up every 5 combo hits</li>
+              <li><strong>Time:</strong> 60 seconds to get the highest score!</li>
+            </ul>
+          </div>
+        </div>
+        <button class="tutorial-btn" onclick="startTutorial()">Start Game</button>
+      </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+      <div class="game-header">
+        <h1 class="game-title">
+          <span class="title-pop"></span>POP the BUBBLES
+        </h1>
+      </div>
+      
+      <div id="hud" class="hud-modern">
+        <div class="hud-item score-box">
+          <div class="label">SCORE</div>
+          <div id="score" class="value">0</div>
+        </div>
+        <div class="hud-item timer-box">
+          <div class="label">TIME</div>
+          <div id="timer" class="value">60</div>
+        </div>
+        <div class="hud-item combo-box">
+          <div class="label">COMBO</div>
+          <div id="combo" class="value">0x</div>
+        </div>
+        <div class="hud-item level-box">
+          <div class="label">WAVE</div>
+          <div id="level" class="value">1</div>
+        </div>
+        <button id="pause-btn" class="pause-btn" onclick="togglePause()">⏸ PAUSE</button>
+      </div>
+    </div>
+
+    <div id="pause-overlay" class="pause-overlay hidden">
+      <div class="pause-content">
+        <h2 class="pause-title">PAUSED</h2>
+        <button class="pause-resume-btn" onclick="togglePause()">▶ RESUME</button>
+        <button class="pause-menu-btn" onclick="endGame()">⌂ MAIN MENU</button>
+      </div>
+    </div>
+
+    <div id="power-up-display" class="power-up-indicator hidden"></div>
+    <div id="damage-numbers-container"></div>
+
+    <div id="bubble-tooltip" class="bubble-tooltip hidden"></div>
+
+    <div id="game-over" class="game-over-modal hidden">
+      <div class="game-over-content">
+        <h2 class="game-over-title">GAME OVER</h2>
+        <div class="final-score-container">
+          <p class="final-score-label">Your Score</p>
+          <p id="final-score" class="final-score-value">0</p>
+        </div>
+        <div class="final-stats">
+          <p id="final-combo" class="stat-text"></p>
+          <p id="final-level" class="stat-text"></p>
+        </div>
+        <button class="play-again-btn" onclick="restartGame()">Play Again</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
